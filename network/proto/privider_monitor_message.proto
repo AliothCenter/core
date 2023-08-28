@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package work.sunist.project.alioth.rpc.proto;
+option go_package = "./alioth";
+
+message HeartbeatRequest {
+  string trace_id = 1; // 心跳的uuid，避免重复处理
+}
+
+message HeartbeatResponse {
+  int32 handled_count = 1; // 已经处理的任务数量
+  int32 pending_count = 2; // 等待处理的任务数量
+  int32 success_count = 3; // 处理成功的任务数量
+  int32 error_count = 4; // 处理失败的任务数量
+  int32 system_memory_usage = 5; // 系统内存使用情况
+  int32 heap_memory_usage = 6; // 堆内存使用情况
+  int32 goroutine_count = 7; // goroutine数量
+  int64 average_task_duration = 8; // 平均任务处理时间
+  map<string, int32> task_count_by_type = 9; // 按照任务类型统计的任务数量
+  int64 heartbeat_interval = 10; // 距离上次心跳的间隔时间
+}
+
+service HeartbeatService {
+  rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse);
+}

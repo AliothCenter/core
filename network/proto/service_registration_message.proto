@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package work.sunist.project.alioth.rpc.proto;
+option go_package = "./alioth";
+
+message AliothServiceRegistrationRequest {
+  string service_name = 1; // 服务名称
+  string service_version = 2; // 服务版本
+  int32 max_instances = 3; // 最大实例数
+  repeated AliothServiceHandler handlers = 4; // handler列表
+}
+
+message AliothServiceHandler {
+  string handler_name = 1; // handler的名称
+  string http_method = 2; // handler的http方法
+  string listen_url = 3; // handler的监听url
+  HandlerCheckDetails check_arguments = 4; // handler的参数检查
+}
+
+message HandlerCheckDetails {
+  string example_request = 1; // 在provider注册时，会使用这个example作为body进行请求
+  map<string, string> example_url_query_arguments = 3; // 在provider注册时，会使用这个example作为url_query进行请求
+  map<string, string> example_url_param_arguments =4; // 在provider注册时，会使用这个example作为url_param进行请求
+  string example_response = 2; // 在provider注册时，会使用这个response进行检查
+
+  map<string, bool> url_query_arguments = 5; // 在监听到请求时，会检查url_query中是否包含这些参数
+  map<string, bool> url_param_arguments = 6; // 在监听到请求时，会检查url_param中是否包含这些参数
+}
+
+message AliothServiceRegistrationResponse {
+  int32 error_code = 1; // 0表示成功，其他表示失败
+  string error_message = 2; // 如果失败，会有错误信息
+  repeated HandlerRegistrationDetail details = 3; // 注册成功的handler的详细信息
+}
+
+message HandlerRegistrationDetail {
+  string handler_name = 1; // handler的名称
+  string request_method = 2; // handler的http方法
+  string request_url = 3; // handler的监听url
+}
+
+service AliothServiceRegistration {
+  rpc Register(AliothServiceRegistrationRequest) returns (AliothServiceRegistrationResponse) {}
+}
