@@ -18,13 +18,8 @@ message AliothServiceHandler {
 }
 
 message HandlerCheckDetails {
-  string example_request = 1; // 在provider注册时，会使用这个example作为body进行请求
-  map<string, string> example_url_query_arguments = 3; // 在provider注册时，会使用这个example作为url_query进行请求
-  map<string, string> example_url_param_arguments =4; // 在provider注册时，会使用这个example作为url_param进行请求
-  string example_response = 2; // 在provider注册时，会使用这个response进行检查
-
-  map<string, bool> url_query_arguments = 5; // 在监听到请求时，会检查url_query中是否包含这些参数
-  map<string, bool> url_param_arguments = 6; // 在监听到请求时，会检查url_param中是否包含这些参数
+  map<string, bool> url_query_arguments = 1; // 在监听到请求时，会检查url_query中是否包含这些参数
+  map<string, bool> url_param_arguments = 2; // 在监听到请求时，会检查url_param中是否包含这些参数
 }
 
 message AliothServiceRegistrationResponse {
@@ -40,5 +35,5 @@ message HandlerRegistrationDetail {
 }
 
 service AliothServiceRegistration {
-  rpc Register(AliothServiceRegistrationRequest) returns (AliothServiceRegistrationResponse) {}
+  rpc Register(AliothServiceRegistrationRequest) returns (AliothServiceRegistrationResponse);
 }
