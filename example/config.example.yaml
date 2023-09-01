@@ -1,0 +1,24 @@
+database:
+  host: "localhost"
+  port: 5432
+  username: "your_username"
+  password: "your_password"
+  database: "your_database_name"
+  max_idle: 10
+  max_open: 100
+  sql_logger: "your_sql_logger"
+  disable_prepare_sql: false
+  debug_mode: true
+  allow_global_update: true
+  translate_error: true
+  sync_dao_models: true
+
+grpc:
+  listen_ip: "127.0.0.1"
+  listen_port: 50051
+  timeout_seconds: 10
+
+http:
+  listen_ip: "127.0.0.1"
+  listen_port: 50050
+  timeout_seconds: 10
