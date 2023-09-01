@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package work.sunist.project.alioth.rpc.proto;
+option go_package = "./alioth";
+
+import "handler_definition_message.proto";
+import "handler_registration_message.proto";
+import "handler_unmount_message.proto";
+import "handler_list_message.proto";
+import "handler_process_message.proto";
+
+service AliothCenter {
+  rpc HandlerDefinition (HandlerDefinitionRequest) returns (HandlerDefinitionResponse) {}
+  rpc HandlerRegistration (HandlerRegistrationRequest) returns (HandlerRegistrationResponse) {}
+  rpc HandlerUnmount (HandlerUnmountRequest) returns (HandlerUnmountResponse) {}
+  rpc HandlerList (HandlerListRequest) returns (HandlerListResponse) {}
+  rpc HandlerProcess (HandlerProcessRequest) returns (HandlerProcessResponse) {}
+}

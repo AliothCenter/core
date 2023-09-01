@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package work.sunist.project.alioth.rpc.proto;
+option go_package = "./alioth";
+
+import "restoration_collection_message.proto";
+
+service AliothRestoration {
+  rpc RestorationCollection (RestorationCollectionRequest) returns (RestorationCollectionResponse) {}
+}

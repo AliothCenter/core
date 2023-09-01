@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package work.sunist.project.alioth.rpc.proto;
+option go_package = "./alioth";
+
+import "service_registration_message.proto";
+import "service_discovery_message.proto";
+import "service_unmount_message.proto";
+import "service_list_message.proto";
+
+service AliothStellar {
+  rpc ServiceRegistration (ServiceRegistrationRequest) returns (ServiceRegistrationResponse) {}
+  rpc ServiceDiscovery (ServiceDiscoveryRequest) returns (ServiceDiscoveryResponse) {}
+  rpc ServiceUnmount (ServiceUnmountRequest) returns (ServiceUnmountResponse) {}
+  rpc ServiceList (ServiceListRequest) returns (ServiceListResponse) {}
+}

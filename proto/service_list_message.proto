@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package work.sunist.project.alioth.rpc.proto;
+option go_package = "./alioth";
+
+message ServiceListRequest {
+  int32 page_limit = 1;
+  int32 page_offset = 2;
+}
+
+message ServiceListResponse {
+  int32 total = 1;
+  int32 page_limit = 2;
+  int32 page_offset = 3;
+  repeated ServiceRecord services = 4;
+}
+
+message ServiceRecord {
+  string service = 1;
+  string name = 2;
+  string address = 3;
+  string version = 4;
+  string created_at = 5;
+  string updated_at = 6;
+}

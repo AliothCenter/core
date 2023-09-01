@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package work.sunist.project.alioth.rpc.proto;
+option go_package = "./alioth";
+
+message HandlerProcessRequest {
+  map<string, string> headers = 1;
+  map<string, string> cookies = 2;
+  map<string, string> queries = 3;
+  map<string, string> params = 4;
+  bytes data = 5;
+  map<string, bool> scopes = 6;
+}
+
+message ProcessHeader {
+  string processed_at = 1;
+  string process_handler = 2;
+  string trace_id = 3;
+}
+
+message ProcessResult {
+  int32 error_code = 1;
+  string error_message = 2;
+}
+
+message HandlerProcessResponse {
+  ProcessHeader header = 1;
+  ProcessResult result = 2;
+  bytes data = 3;
+  map<string, string> cookies = 4;
+  map<string, string> headers = 5;
+}

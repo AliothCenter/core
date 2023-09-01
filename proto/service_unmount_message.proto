@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package work.sunist.project.alioth.rpc.proto;
+option go_package = "./alioth";
+
+message ServiceUnmountRequest {
+  string service = 1;
+  string name = 2;
+}
+
+message ServiceUnmountResponse {
+  string service = 1;
+  string name = 2;
+  bool success = 3;
+}

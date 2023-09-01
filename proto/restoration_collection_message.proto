@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package work.sunist.project.alioth.rpc.proto;
+option go_package = "./alioth";
+
+message RestorationCollectionRequest {
+  string caller_service = 1;
+  string code_path = 2;
+  string level = 3;
+  string message = 4;
+  string called_at = 5;
+  string called_function = 6;
+  string trace_id = 7;
+  bytes input_fields = 8; // 输入参数字段
+  bytes payload_fields = 9; // 中间数据字段
+  bytes extra_fields = 10; // 更多附加上下文字段
+}
+
+message RestorationCollectionResponse {
+}
