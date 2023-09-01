@@ -1,0 +1,47 @@
+linters:
+  enable:
+    - gofumpt # 格式化检测
+    - lll # 行长度检测
+    - govet # 检查可能的错误
+    - unused # 检查未使用的变量
+    - unparam # 检查未使用的参数
+    - misspell # 拼写检查
+    - cyclop # 检查函数的圈复杂度
+    - gocyclo # 检查函数的圈复杂度
+    - nakedret # 检查未命名的返回值
+    - goconst # 检查常量
+    - revive # 检查代码风格
+    - prealloc # 检查slice预分配
+    - gosec # 检查安全问题
+
+linters-settings:
+  cyclop:
+    max-complexity: 25
+  lll:
+    line-length: 200
+  unparam:
+    check-exported: true
+  unused:
+    check-exported: true
+  nakedret:
+    max-func-lines: 50
+  gocyclo:
+    min-complexity: 30
+  prealloc:
+    simple: true
+    range-loops: true
+    for-loops: false
+  goconst:
+    min-len: 3
+    min-occurrences: 3
+  revive:
+    rules:
+      - name: var-naming
+        arguments:
+          - ["Id", "Sql", "ID", "SQL", "API", "Api", "Uri", "URI", "URL", "JSON", "HTTP", "RPC", "IP", "Uid", "UID", "Json", "Rpc", "Http"]
+          - []
+
+run:
+  deadline: 1m
+  skip-dirs:
+    - example/* # !!!!!你他喵不要再检查example了!!!!!
