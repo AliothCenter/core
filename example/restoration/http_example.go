@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	restoration "studio.sunist.work/platform/alioth-center/core/restoration/client"
-	"studio.sunist.work/platform/alioth-center/infrastructure/global/utils"
+	"studio.sunist.work/platform/alioth-center/infrastructure/utils"
 	"time"
 )
 
@@ -37,7 +37,6 @@ func main() {
 			Hello: "world",
 		},
 	}
-
 	// 打印日志
 	ctx := utils.AddTraceID(context.Background())
 	collector.Debug(restoration.NewCollection(ctx, "hello, world"))

@@ -3,8 +3,10 @@ package main
 import (
 	"context"
 	"fmt"
-	sdk "studio.sunist.work/platform/alioth-center/core/restoration/client"
-	"studio.sunist.work/platform/alioth-center/infrastructure/global/utils"
+	restoration "studio.sunist.work/platform/alioth-center/core/restoration/client"
+	stellar "studio.sunist.work/platform/alioth-center/core/stellar/client"
+	"studio.sunist.work/platform/alioth-center/infrastructure/utils"
+	"studio.sunist.work/platform/alioth-center/infrastructure/utils/version"
 	"time"
 )
 
@@ -18,13 +20,25 @@ type RpcExampleStruct struct {
 }
 
 func main() {
+	// 初始化一个 stellar 客户端
+	client, initStellarErr := stellar.NewClient("127.0.0.1:50051")
+	if initStellarErr != nil {
+		panic(initStellarErr)
+	}
+
+	// 从stellar获取一个 restoration 服务的地址
+	address, _, discoveryErr := client.Discovery("alioth-restoration", version.NewVersion(1, 0, 0, 0))
+	if discoveryErr != nil {
+		panic(discoveryErr)
+	}
+
 	// 添加一个自定义的收集器，将所有日志记录的错误打印
-	collector, err := sdk.NewCollectorWithFailedCallback("rpc-example", "127.0.0.1:50051",
+	collector, initCollectorErr := restoration.NewCollectorWithFailedCallback("rpc-example", address,
 		1, func(err error) {
 			fmt.Println(err)
 		})
-	if err != nil {
-		panic(err)
+	if initCollectorErr != nil {
+		panic(initCollectorErr)
 	}
 
 	// 需要发送的结构体
@@ -44,10 +58,10 @@ func main() {
 
 	// 打印日志
 	ctx := utils.AddTraceID(context.Background())
-	collector.Debug(sdk.NewCollection(ctx, "hello, world"))
-	collector.Info(sdk.NewCollection(ctx, "hello, world").WithParams(exampleStructure))
-	collector.Warn(sdk.NewCollection(ctx, "hello, world").WithProcessing(exampleStructure))
-	collector.Error(sdk.NewCollection(ctx, "hello, world").WithExtra(exampleStructure))
+	collector.Debug(restoration.NewCollection(ctx, "hello, world"))
+	collector.Info(restoration.NewCollection(ctx, "hello, world").WithParams(exampleStructure))
+	collector.Warn(restoration.NewCollection(ctx, "hello, world").WithProcessing(exampleStructure))
+	collector.Error(restoration.NewCollection(ctx, "hello, world").WithExtra(exampleStructure))
 
 	time.Sleep(time.Second)
 }
