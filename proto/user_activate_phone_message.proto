@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package work.sunist.project.alioth.rpc.proto;
+option go_package = "./alioth";
+
+message UserActivatePhoneRequest {
+  string username = 1;
+  string phone = 2;
+  string activate_code = 3;
+}
+
+message UserActivatePhoneResponse {
+  bool success = 1;
+}

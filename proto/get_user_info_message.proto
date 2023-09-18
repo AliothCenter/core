@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package work.sunist.project.alioth.rpc.proto;
+option go_package = "./alioth";
+
+message GetUserInfoRequest {
+  string key_type = 1;
+  string key = 2;
+}
+
+message GetUserInfoResponse {
+  string username = 1;
+  string nickname = 2;
+  string avatar = 5;
+  string role = 6;
+  bool activated = 7;
+  string created_at = 8;
+  string updated_at = 9;
+}

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package work.sunist.project.alioth.rpc.proto;
+option go_package = "./alioth";
+
+message UserRegistrationRequest {
+  string username = 1;
+  string email = 2;
+  string password = 3;
+}
+
+message UserRegistrationResponse {
+  string username = 1;
+  string email = 2;
+  bool enable = 3;
+  string role = 4;
+  string created_at = 5;
+  string updated_at = 6;
+}

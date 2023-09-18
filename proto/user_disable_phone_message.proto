@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package work.sunist.project.alioth.rpc.proto;
+option go_package = "./alioth";
+
+message UserDisablePhoneRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message UserDisablePhoneResponse {
+  bool success = 1;
+}

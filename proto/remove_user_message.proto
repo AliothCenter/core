@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package work.sunist.project.alioth.rpc.proto;
+option go_package = "./alioth";
+
+message RemoveUserRequest {
+  string username = 1;
+  string password = 2;
+  string email_confirm_code = 3;
+}
+
+message RemoveUserResponse {
+  bool success = 1;
+}

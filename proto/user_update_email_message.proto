@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package work.sunist.project.alioth.rpc.proto;
+option go_package = "./alioth";
+
+message UserUpdateEmailRequest {
+  string username = 1;
+  string new_email = 2;
+}
+
+message UserUpdateEmailResponse {
+  bool success = 1;
+}

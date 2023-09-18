@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package work.sunist.project.alioth.rpc.proto;
+option go_package = "./alioth";
+
+message ApplicationUpdateCallbackRequest {
+  string application_name = 1;
+  string new_callback_domain = 2;
+}
+
+message ApplicationUpdateCallbackResponse {
+  bool success = 1;
+}

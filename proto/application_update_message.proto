@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package work.sunist.project.alioth.rpc.proto;
+option go_package = "./alioth";
+
+message ApplicationUpdateRequest {
+  string application_name = 1;
+  string application_avatar = 2;
+  string application_website = 3;
+  string application_email = 4;
+}
+
+message ApplicationUpdateResponse {
+  string application_name = 1;
+  string application_avatar = 2;
+  string application_website = 3;
+  string application_email = 4;
+  string updated_at = 5;
+  string created_at = 6;
+}

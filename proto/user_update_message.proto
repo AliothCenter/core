@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package work.sunist.project.alioth.rpc.proto;
+option go_package = "./alioth";
+
+message UserUpdateRequest {
+  string username = 1;
+  string nickname = 2;
+  string avatar = 3;
+}
+
+message UserUpdateResponse {
+  string username = 1;
+  string nickname = 2;
+  string avatar = 3;
+  string created_at = 4;
+  string updated_at = 5;
+}
