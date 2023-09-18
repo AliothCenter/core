@@ -6,7 +6,9 @@ logs/
 
 
 dockerfile
+Dockerfile
 docker-compose.yaml
+docker-compose.yml
 .DS_Store
 
 # 生成的protobuf文件，不需要提交

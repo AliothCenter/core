@@ -38,7 +38,7 @@ linters-settings:
     rules:
       - name: var-naming
         arguments:
-          - ["Id", "Sql", "ID", "SQL", "API", "Api", "Uri", "URI", "URL", "JSON", "HTTP", "RPC", "IP", "Uid", "UID", "Json", "Rpc", "Http"]
+          - ["Id", "Sql", "ID", "SQL", "API", "Api", "Uri", "URI", "URL", "JSON", "HTTP", "RPC", "IP", "Uid", "UID", "Json", "Rpc", "Http", "Smtp", "SMTP", "Html", "HTML", "Xml", "XML"]
           - []
 
 run:
