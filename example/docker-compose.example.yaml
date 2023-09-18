@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  postgres:
+    image: studio.sunist.work/library/postgres:latest
+    container_name: alioth-system-postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=your_user
+      - POSTGRES_PASSWORD=you_rpassword
+      - POSTGRES_DB=your_database
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:alpine
+    container_name: alioth-system-redis
+    restart: always
+    command:
+      - redis-server
+    ports:
+      - "6379:6379"
