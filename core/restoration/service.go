@@ -3,7 +3,8 @@ package restoration
 import (
 	"context"
 
-	log "studio.sunist.work/platform/alioth-center/infrastructure/global/utils/logger"
+	"studio.sunist.work/platform/alioth-center/infrastructure/utils/logger"
+
 	"studio.sunist.work/platform/alioth-center/proto/alioth"
 )
 

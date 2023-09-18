@@ -46,7 +46,7 @@ func (c *client) execute(request *alioth.RestorationCollectionRequest) {
 // 不会验证 serverAddr 的有效性，失败了也不会有任何提示，哪怕是失败日志也不会有
 func newRestorationClient(serverAddr string) (c *client, err error) {
 	if conn, dialErr := grpc.Dial(serverAddr, grpc.WithCredentialsBundle(insecure.NewBundle())); dialErr != nil {
-		return nil, fmt.Errorf("failed to dial grpc client: %v", dialErr)
+		return nil, fmt.Errorf("failed to dial grpc client: %w", dialErr)
 	} else {
 		clt := alioth.NewAliothRestorationClient(conn)
 		return &client{conn: clt, maxFailed: 1 << 31, failedCall: func(error) {}}, nil

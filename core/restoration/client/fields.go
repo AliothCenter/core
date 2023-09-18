@@ -6,7 +6,8 @@ import (
 	"strconv"
 	"time"
 
-	"studio.sunist.work/platform/alioth-center/infrastructure/global/utils"
+	"studio.sunist.work/platform/alioth-center/infrastructure/global"
+	"studio.sunist.work/platform/alioth-center/infrastructure/utils"
 )
 
 type Fields interface {
@@ -57,7 +58,7 @@ func (f *fields) withBasic(ctx context.Context, message string) Fields {
 
 	f.service = serviceName
 	f.message = message
-	f.calledAt = time.Now().Format("2006.01.02-15:04:05.000Z07:00")
+	f.calledAt = time.Now().Format(global.AliothTimeFormat)
 
 	return f
 }
