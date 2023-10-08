@@ -2,9 +2,11 @@ package main
 
 import (
 	"fmt"
+	"net"
+
 	"github.com/gin-gonic/gin"
 	"google.golang.org/grpc"
-	"net"
+
 	"studio.sunist.work/platform/alioth-center/core/restoration"
 	"studio.sunist.work/platform/alioth-center/core/stellar"
 	"studio.sunist.work/platform/alioth-center/infrastructure/database"
